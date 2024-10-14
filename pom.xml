@@ -13,6 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <versions.javaee>8.0.1</versions.javaee>
         <versions.lombok>1.18.34</versions.lombok>
+        <versions.swagger>2.2.23</versions.swagger>
         <versions.junit>5.11.1</versions.junit>
         <versions.mockito>5.14.1</versions.mockito>
     </properties>
@@ -28,7 +29,24 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${versions.lombok}</version>
-            <scope>provided</scope>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--            <version>${versions.swagger}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-core</artifactId>-->
+<!--            <version>${versions.swagger}</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>${versions.swagger}</version>
         </dependency>
 
         <dependency>

@@ -1,4 +1,4 @@
-package com.webstartrek.wss.resources;
+package com.webstartrek.wss.configuration;
 
 
 import javax.ws.rs.GET;
