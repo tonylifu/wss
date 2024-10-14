@@ -13,6 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <versions.javaee>8.0.1</versions.javaee>
         <versions.lombok>1.18.34</versions.lombok>
+        <versions.hibernate>6.6.1.Final</versions.hibernate>
         <versions.swagger>2.2.23</versions.swagger>
         <versions.junit>5.11.1</versions.junit>
         <versions.mockito>5.14.1</versions.mockito>
@@ -42,6 +43,14 @@
 <!--            <artifactId>swagger-core</artifactId>-->
 <!--            <version>${versions.swagger}</version>-->
 <!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${versions.hibernate}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
