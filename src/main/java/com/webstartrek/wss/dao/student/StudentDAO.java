@@ -1,18 +1,20 @@
 package com.webstartrek.wss.dao.student;
 
+import com.webstartrek.wss.annotations.StudentDAOIdentifier;
+import com.webstartrek.wss.dao.DAOService;
+import com.webstartrek.wss.dao.EntityManagerProvider;
+import com.webstartrek.wss.dao.GenericDAO;
 import com.webstartrek.wss.models.entities.student.Student;
 
-import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
-public interface StudentDAO {
+@StudentDAOIdentifier
+@Stateless
+public class StudentDAO extends GenericDAO<Student, String> implements DAOService <Student, String> {
 
-    void create(Student student);
-
-    Student read(String studentId);
-
-    List<Student> readAll(int pageNumber, int pageSize);
-
-    void update(Student student);
-
-    void delete(String studentId);
+    @Inject
+    public StudentDAO(EntityManagerProvider entityManagerProvider, Class<Student> entityClass) {
+        super(entityManagerProvider, entityClass);
+    }
 }

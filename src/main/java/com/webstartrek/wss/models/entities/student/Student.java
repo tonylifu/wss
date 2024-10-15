@@ -40,13 +40,16 @@ public class Student {
     @Column(nullable = false)
     private Gender gender;
 
-    @JdbcTypeCode(SqlTypes.JSON)
+    @Embedded
+    //@JdbcTypeCode(SqlTypes.JSON)
     private Address address;
 
-    @JdbcTypeCode(SqlTypes.JSON)
+    @Embedded
+   // @JdbcTypeCode(SqlTypes.JSON)
     private Contact contact;
 
-    @JdbcTypeCode(SqlTypes.JSON)
+    @Embedded
+    //@JdbcTypeCode(SqlTypes.JSON)
     private LegalGuardian legalGuardian;
 
     @Column(nullable = false)

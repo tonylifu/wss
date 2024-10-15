@@ -1,13 +1,14 @@
 package com.webstartrek.wss.service;
 
+import com.webstartrek.wss.models.dtos.request.student.CreateStudentRequest;
+import com.webstartrek.wss.models.dtos.response.student.StudentResponse;
 import com.webstartrek.wss.models.entities.student.Student;
-
 import java.util.List;
 
 public interface StudentService {
-    void createStudent(Student student);
+    void createStudent(CreateStudentRequest createStudentRequest);
 
-    Student readStudentByStudentId(String studentId);
+    StudentResponse readStudentByStudentId(String studentId);
 
     List<Student> readAllStudents(int pageNumber, int pageSize);
 

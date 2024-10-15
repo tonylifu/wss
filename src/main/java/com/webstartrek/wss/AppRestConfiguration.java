@@ -16,44 +16,6 @@ import java.util.Set;
 @ApplicationPath("api")
 public class AppRestConfiguration extends Application {
 
-//    @Override
-//    public Set<Object> getSingletons() {
-//        Set<Object> singletons = new HashSet<>();
-//
-//        // Configure OpenAPI and set server URL
-//        OpenAPI openAPI = new OpenAPI()
-//                .info(new Info()
-//                        .title("My API")
-//                        .version("1.0")
-//                        .description("API for my Java EE application"))
-//                // Include the 'wss' context root in the server URL
-//                .servers(Arrays.asList(new Server().url("http://localhost:8080/wss")));
-//
-//        // Set up Swagger configuration
-//        SwaggerConfiguration oasConfig = new SwaggerConfiguration()
-//                .openAPI(openAPI)
-//                .prettyPrint(true);
-//
-//        // Register the OpenApiResource for Swagger
-//        OpenApiResource openApiResource = new OpenApiResource();
-//        openApiResource.setOpenApiConfiguration(oasConfig);
-//
-//        // Add OpenApiResource to singletons
-//        singletons.add(openApiResource);
-//
-//        return singletons;
-//    }
-//
-//    @Override
-//    public Set<Class<?>> getClasses() {
-//        Set<Class<?>> classes = new HashSet<>();
-//
-//        // Register your JAX-RS resource classes here
-//        classes.add(TestController.class);
-//
-//        return classes;
-//    }
-
     @Override
     public Set<Object> getSingletons() {
         Set<Object> singletons = new HashSet<>();
