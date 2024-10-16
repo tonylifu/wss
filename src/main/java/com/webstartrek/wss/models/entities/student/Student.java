@@ -6,9 +6,6 @@ import com.webstartrek.wss.models.dtos.LegalGuardian;
 import com.webstartrek.wss.models.enums.Gender;
 import com.webstartrek.wss.models.enums.StudentStatus;
 import lombok.Data;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-
 import javax.persistence.*;
 
 @Entity
@@ -41,15 +38,12 @@ public class Student {
     private Gender gender;
 
     @Embedded
-    //@JdbcTypeCode(SqlTypes.JSON)
     private Address address;
 
     @Embedded
-   // @JdbcTypeCode(SqlTypes.JSON)
     private Contact contact;
 
     @Embedded
-    //@JdbcTypeCode(SqlTypes.JSON)
     private LegalGuardian legalGuardian;
 
     @Column(nullable = false)

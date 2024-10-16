@@ -1,0 +1,160 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Modern, legible font */
+    font-size: 16px; /* Standard font size for mobile readability */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFB; /* Light background */
+    color: #333; /* Darker text color for contrast */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    color: #2C3E50; /* Darker heading color */
+    font-size: 1.2em; /* Scaled down for mobile */
+}
+
+p {
+    margin: 0.5em 0;
+    padding: 0;
+    color: #444; /* Text color slightly lighter */
+}
+
+input, button, select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    padding: 0.75em;
+    border: 1px solid #D1D5DB; /* Light border */
+    border-radius: 4px;
+    width: 100%; /* Full width for mobile */
+    box-sizing: border-box;
+}
+
+body > header {
+    padding: 1em;
+    background-color: #1F2937; /* Dark header background */
+    color: #FFFFFF; /* White text for contrast */
+    text-align: center;
+}
+
+body > header > h1 {
+    margin: 0;
+    font-size: 1.5em; /* Scaled for mobile */
+}
+
+body > section, body > form > section {
+    margin: 0.5em 5%;
+    padding: 1em;
+    background-color: #FFFFFF; /* White background for sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden;
+}
+
+body > footer {
+    padding: 1em;
+    background-color: #1F2937; /* Same footer background */
+    color: #FFFFFF;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+body > footer > p {
+    margin: 0;
+}
+
+.product-summary {
+    margin: 0.5em 0;
+    padding: 0.5em 0;
+    clear: both;
+}
+
+.product-summary > img {
+    width: 100%; /* Full width images on mobile */
+    height: auto;
+    padding: 0;
+}
+
+.shoppingcart-table {
+    width: 100%;
+}
+
+.shoppingcart-header, .shoppingcart-col-name {
+    padding: 0.5em;
+    text-align: left;
+    font-weight: bold;
+    background-color: #F3F4F6; /* Soft gray for header background */
+    color: #111827;
+}
+
+.shoppingcart-col-price, .shoppingcart-col-quantity, .shoppingcart-col-amount {
+    padding: 0.5em;
+    text-align: right;
+    background-color: #F9FAFB;
+    color: #111827;
+}
+
+.shoppingcart-footer {
+    padding: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+ul.validation-messages {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    color: #B91C1C; /* Red for error messages */
+}
+
+ul.validation-messages li {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+.form-grid {
+    width: 100%;
+    display: block; /* One column layout for mobile */
+}
+
+.form-column-label {
+    display: block;
+    padding-bottom: 0.5em;
+    font-weight: bold;
+    color: #374151;
+}
+
+.form-column-input {
+    width: 100%;
+}
+
+.button-right {
+    display: block;
+    margin-top: 1em;
+    width: 100%; /* Full width button for mobile */
+    background-color: #2563EB; /* Blue button */
+    color: #FFFFFF;
+    border: none;
+    padding: 0.75em;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-right:hover {
+    background-color: #1D4ED8; /* Darker blue on hover */
+}
+
+/* Additional media query to handle very small screens */
+@media (max-width: 480px) {
+    body > section, body > form > section {
+        margin: 0.5em 2%; /* Less margin on smaller screens */
+    }
+}

@@ -4,11 +4,16 @@
     <persistence-unit name="wssPU" transaction-type="JTA">
         <jta-data-source>java:/jdbc/wss-db</jta-data-source>
         <!-- Hibernate Properties -->
+        <class>com.webstartrek.wss.models.entities.student.Student</class>
+        <class>com.webstartrek.wss.models.entities.student.StudentAccount</class>
+        <class>com.webstartrek.wss.models.entities.student.StudentNumber</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.jcache.JCacheRegionFactory"/>
         </properties>
     </persistence-unit>
 </persistence>
