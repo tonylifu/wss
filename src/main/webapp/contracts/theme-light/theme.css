@@ -32,7 +32,7 @@ input[type="submit"], input[type="button"] {
 }
 
 body > header {
-    background-color: #f15b2a;
+    background-color: #2a9fbc; /*#f15b2a;*/
     color: white;
 }
 

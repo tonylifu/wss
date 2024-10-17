@@ -50,9 +50,12 @@
 
                         <h:outputLabel for="disabilityDetails" value="Disability Details:" />
                         <h:inputText id="disabilityDetails" value="#{createStudentBean.disabilityDetails}" />
+
+                        <h:outputText value=""/>
+                        <h:commandButton value="Create Student" action="#{createStudentBean.createStudent}" styleClass="button-right" />
+
                     </h:panelGrid>
 
-                    <h:commandButton value="Create Student" action="#{createStudentBean.createStudent}" />
                 </h:form>
             </section>
         </ui:define>

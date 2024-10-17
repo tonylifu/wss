@@ -11,33 +11,189 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Webstartrek School System - A comprehensive platform for managing school operations efficiently." />
         <meta name="author" content="Webstartrek Development Team" />
+        <meta name="keywords" content="school system, education platform, student management, Webstartrek" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<!--        <h:outputStylesheet name="css/style.css" />-->
         <title>Webstartrek School System</title>
+
+        <style>
+            /* Reset some default browser settings */
+            /* {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #F9FAFB;
+                color: #333;
+            }*/
+
+            header {
+                background-color: #1F2937;
+                padding: 1em 0;
+                text-align: center;
+                /*border-bottom: 4px solid #2563EB;*/
+            }
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 2em;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .logo-container {
+                flex: 1;
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            .logo {
+                max-width: 120px;
+                height: auto;
+            }
+
+            .site-title {
+                flex: 3;
+                text-align: left;
+                color: #FFFFFF;
+            }
+
+            .site-title h1 {
+                font-size: 1.8em;
+                color: #FFFFFF;
+                margin: 0;
+            }
+
+            nav {
+                flex: 2;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .navigation-menu {
+                list-style: none;
+                display: flex;
+                gap: 1.5em;
+            }
+
+            .navigation-menu li {
+                display: inline;
+            }
+
+            .navigation-menu a {
+                color: #FFFFFF;
+                text-decoration: none;
+                font-size: 1.1em;
+                padding: 0.5em 1em;
+                transition: background-color 0.3s ease;
+                border-radius: 4px;
+            }
+
+            .navigation-menu a:hover {
+                background-color: #2563EB;
+            }
+
+            /* Mobile responsive styles */
+            @media (max-width: 768px) {
+                .header-container {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .site-title h1 {
+                    font-size: 1.5em;
+                }
+
+                nav {
+                    margin-top: 1em;
+                }
+
+                .navigation-menu {
+                    flex-direction: column;
+                    gap: 0.5em;
+                }
+            }
+        </style>
     </h:head>
 
     <h:body>
         <header>
             <div class="header-container">
+                <!-- Logo Section -->
                 <div class="logo-container">
-                    <h:graphicImage name="images/logo.jpg" alt="Webstartrek School System Logo" />
+                    <h:graphicImage name="images/logo.jpg" alt="Webstartrek School System Logo" class="logo" />
                 </div>
+
+                <!-- Site Title Section -->
                 <div class="site-title">
                     <h1>Webstartrek School System</h1>
                 </div>
-<!--                <nav>-->
-<!--                    <ul class="navigation-menu">-->
-<!--                        <li><h:link value="Home" outcome="/home.xhtml" /></li>-->
-<!--                        <li><h:link value="About Us" outcome="/about.xhtml" /></li>-->
-<!--                        <li><h:link value="Contact" outcome="/contact.xhtml" /></li>-->
-<!--                        <li><h:link value="Login" outcome="/login.xhtml" /></li>-->
-<!--                    </ul>-->
-<!--                </nav>-->
+
+                <!-- Navigation Section -->
+                <nav>
+                    <ul class="navigation-menu">
+                        <li><h:link value="Home" outcome="/create-student.xhtml" /></li>
+                        <li><h:link value="About Us" outcome="/create-student.xhtml" /></li>
+                        <li><h:link value="Contact" outcome="/create-student.xhtml" /></li>
+                        <li><h:link value="Login" outcome="/create-student.xhtml" /></li>
+                    </ul>
+                </nav>
             </div>
         </header>
     </h:body>
 </ui:composition>
 </html>
+
+
+
+
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"-->
+<!--      xmlns:h="http://xmlns.jcp.org/jsf/html"-->
+<!--      lang="en">-->
+
+<!--<ui:composition>-->
+<!--    <h:head>-->
+<!--        <meta charset="UTF-8" />-->
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--        <meta name="description" content="Webstartrek School System - A comprehensive platform for managing school operations efficiently." />-->
+<!--        <meta name="author" content="Webstartrek Development Team" />-->
+
+<!--&lt;!&ndash;        <h:outputStylesheet name="css/style.css" />&ndash;&gt;-->
+<!--        <title>Webstartrek School System</title>-->
+<!--    </h:head>-->
+
+<!--    <h:body>-->
+<!--        <header>-->
+<!--            <div class="header-container">-->
+<!--                <div class="logo-container">-->
+<!--                    <h:graphicImage name="images/logo.jpg" alt="Webstartrek School System Logo" class="logo" />-->
+<!--                </div>-->
+<!--                <div class="site-title">-->
+<!--                    <h1>Webstartrek School System</h1>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <nav>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="navigation-menu">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><h:link value="Home" outcome="/home.xhtml" /></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><h:link value="About Us" outcome="/about.xhtml" /></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><h:link value="Contact" outcome="/contact.xhtml" /></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><h:link value="Login" outcome="/login.xhtml" /></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </nav>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </header>-->
+<!--    </h:body>-->
+<!--</ui:composition>-->
+<!--</html>-->
 
 
 
