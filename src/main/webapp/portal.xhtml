@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>Portal</title>
@@ -237,33 +238,47 @@
 
     <div class="content">
         <div class="panel-top">
-            <h2>Content Description</h2>
-            <p>This section provides a brief overview of the content displayed on this page.</p>
+            <h2>All Students</h2>
+            <p>This is the list of all students.</p>
         </div>
 
         <div class="panel-main">
             <h2>List of Students</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Enrollment Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Sample Data -->
-                <!-- <ui:repeat value="#{studentBean.studentList}" var="student"> -->
-                <!--     <tr> -->
-                <!--         <td>#{student.id}</td> -->
-                <!--         <td>#{student.name}</td> -->
-                <!--         <td>#{student.email}</td> -->
-                <!--         <td>#{student.enrollmentDate}</td> -->
-                <!--     </tr> -->
-                <!-- </ui:repeat> -->
-                </tbody>
-            </table>
+
+            <h:form id="studentForm">
+                <h:panelGrid columns="1" styleClass="dataTableWrapper">
+                    <p:dataTable value="#{studentBean.students}" var="student" paginator="false"
+                                 rows="#{studentBean.pageSize}" emptyMessage="No students found." style="width:100%">
+
+                        <p:column headerText="ID">
+                            <h:outputText value="#{student.studentId}" />
+                        </p:column>
+
+                        <p:column headerText="First Name">
+                            <h:outputText value="#{student.firstName}" />
+                        </p:column>
+
+                        <p:column headerText="Last Name">
+                            <h:outputText value="#{student.lastName}" />
+                        </p:column>
+
+                        <p:column headerText="Gender">
+                            <h:outputText value="#{student.gender}" />
+                        </p:column>
+
+                        <p:column headerText="Current Grade">
+                            <h:outputText value="#{student.currentGrade}" />
+                        </p:column>
+
+                        <p:column headerText="Status">
+                            <h:outputText value="#{student.studentStatus}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <h:commandButton value="Previous" action="#{studentBean.previousPage}" disabled="#{studentBean.pageNumber == 1}" />
+                    <h:commandButton value="Next" action="#{studentBean.nextPage}" disabled="#{studentBean.pageNumber * studentBean.pageSize >= studentBean.totalStudents}" />
+                </h:panelGrid>
+            </h:form>
         </div>
     </div>
 

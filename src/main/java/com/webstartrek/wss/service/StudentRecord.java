@@ -71,6 +71,11 @@ public class StudentRecord implements StudentService {
         studentDAO.delete(studentId);
     }
 
+    @Override
+    public long countAllStudents() {
+        return studentDAO.countAll(Student.class);
+    }
+
     /**
      * Creates a new Student entity based on the provided CreateStudentRequest.
      *

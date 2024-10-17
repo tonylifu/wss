@@ -17,4 +17,6 @@ public interface DAOService <T, ID> {
 
     @Transactional
     void delete(@NotNull ID id);
+
+    <S> long countAll(Class<S> entityClass);
 }

@@ -1,7 +1,5 @@
 package com.webstartrek.wss.dao;
 
-import lombok.RequiredArgsConstructor;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
@@ -95,4 +93,11 @@ public class GenericDAO<T, ID> implements DAOService <T, ID> {
             LOGGER.warning("Attempted to delete non-existent entity: " + id);
         }
     }
+
+    @Override
+    public <S> long countAll(Class<S> entityClass) {
+        String query = String.format("SELECT COUNT(e) FROM %s e", entityClass.getSimpleName());
+        return entityManagerProvider.getEntityManager().createQuery(query, Long.class).getSingleResult();
+    }
+
 }

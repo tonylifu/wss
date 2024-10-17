@@ -15,4 +15,6 @@ public interface StudentService {
     void updateStudent(Student user);
 
     void deleteStudentByStudentId(String studentId);
+
+    long countAllStudents();
 }

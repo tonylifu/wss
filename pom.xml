@@ -19,6 +19,7 @@
         <versions.junit>5.11.1</versions.junit>
         <versions.mockito>5.14.1</versions.mockito>
         <versions.postgresql>42.7.4</versions.postgresql>
+        <versions.primefaces>13.0.0</versions.primefaces>
     </properties>
     
     <dependencies>
@@ -28,6 +29,14 @@
             <version>${versions.javaee}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${versions.primefaces}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
