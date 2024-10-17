@@ -1,17 +1,14 @@
 package com.webstartrek.wss.models.entities.student;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "student_numbers")
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class StudentNumber {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_numbers_sequence")

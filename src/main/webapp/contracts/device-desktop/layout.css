@@ -1,0 +1,203 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Using a modern, legible font */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFB; /* Light background for readability */
+    color: #333; /* Darker text color for contrast */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    color: #2C3E50; /* Dark, cool heading color */
+}
+
+p {
+    margin: 0.5em 0 0 0;
+    padding: 0;
+    color: #444; /* Slightly lighter than the default text */
+}
+
+input, button, select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    padding: 0.5em;
+    border: 1px solid #D1D5DB; /* Soft gray border */
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+body > header {
+    padding: 1em;
+    background-color: #1F2937; /* Darker background for the header */
+    color: #FFFFFF; /* White text for better contrast */
+    text-align: center;
+}
+
+body > header > h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif; /* Replace with your desired font */
+    font-weight: 700;
+    letter-spacing: 1px; /* Add subtle letter spacing for better readability */
+    padding: 1rem 0; /* Add padding for spacing */
+}
+
+body > section, body > form > section {
+    margin: 0.5em 20%;
+    padding: 1.5em;
+    background-color: #FFFFFF; /* White background for sections */
+    border-radius: 8px; /* Softer corners for a more modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+body > footer {
+    padding: 1em;
+    background-color: #1F2937;
+    color: #FFFFFF;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+body > footer > p {
+    margin: 0;
+}
+
+.product-summary, .product-details {
+    margin: 0.5em 0;
+    padding: 0.5em 0;
+    clear: both;
+}
+
+.product-summary > img, .product-details > img {
+    float: left;
+    padding-right: 1em;
+}
+
+.shoppingcart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.shoppingcart-header, .shoppingcart-col-name {
+    padding: 0.75em;
+    text-align: left;
+    font-weight: bold;
+    background-color: #F3F4F6; /* Soft gray for header background */
+    color: #111827;
+}
+
+.shoppingcart-col-price, .shoppingcart-col-quantity, .shoppingcart-col-amount {
+    padding: 0.75em;
+    text-align: right;
+    background-color: #F9FAFB;
+    color: #111827;
+}
+
+.shoppingcart-footer {
+    padding: 0.75em;
+    font-weight: bold;
+    text-align: right;
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+ul.validation-messages {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    color: #B91C1C; /* Red for error messages */
+}
+
+ul.validation-messages li {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+.form-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1em;
+}
+
+.form-column-label {
+    white-space: nowrap;
+    padding-right: 1em;
+    font-weight: bold;
+    color: #374151; /* Darker label color */
+}
+
+.form-column-input {
+    width: 100%;
+}
+
+/* Align the button below the form input */
+.form-column-button {
+    grid-column: 2 / span 1; /* Align the button under the input field */
+    justify-self: start; /* Align button to the start */
+}
+
+button {
+    margin-top: 1em;
+    background-color: #2563EB; /* Blue for buttons */
+    color: #FFFFFF;
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover and click effects */
+}
+
+button:hover {
+    background-color: #1D4ED8; /* Darker blue on hover */
+}
+
+button:active {
+    background-color: #1D4ED8; /* Maintain dark blue on click */
+    transform: scale(0.98); /* Slight button press effect */
+}
+/*
+.button-right {
+    float: right;
+    clear: both;
+    margin-both: 0.5em;
+}
+
+.button-left {
+    float: left;
+    clear: both;
+    margin-both: 0.5em;
+}*/
+
+/*.button-right {
+    display: block;
+    margin-top: 1em;
+    width: 100%;
+    background-color: #374151;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.75em;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-right:hover {
+    background-color: #3741F1;
+}*/
+
+.logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 20px auto; /* Center the logo */
+  opacity: 0.7;
+  border-radius: 50%;
+  background-size: cover;
+}

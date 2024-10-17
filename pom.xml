@@ -13,7 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <versions.javaee>8.0.1</versions.javaee>
         <versions.lombok>1.18.34</versions.lombok>
-        <versions.hibernate>6.6.1.Final</versions.hibernate>
+<!--        <versions.hibernate>5.4.0.Final</versions.hibernate>-->
         <versions.mapstruct>1.6.2</versions.mapstruct>
         <versions.swagger>2.2.23</versions.swagger>
         <versions.junit>5.11.1</versions.junit>
@@ -53,11 +53,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${versions.hibernate}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.hibernate.orm</groupId>-->
+<!--            <artifactId>hibernate-core</artifactId>-->
+<!--            <version>${versions.hibernate}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>
