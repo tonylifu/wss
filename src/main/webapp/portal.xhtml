@@ -5,718 +5,140 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-    <title>Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-            position: relative;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            height: auto; /* Maintain aspect ratio */
-            opacity: 0.7;
-            border-radius: 50%;
-            background-size: cover;
-        }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #333;
-            color: white;
-            height: calc(100vh - 60px);
-            width: 250px;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-
-        nav h3 {
-            color: white;
-            margin: 10px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-            margin-bottom: 5px;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #575757;
-        }
-
-        .submenu {
-            margin-left: 20px;
-            display: none;
-            position: relative;
-            background-color: #444;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1;
-        }
-
-        .submenu a {
-            padding: 5px;
-            transition: background 0.3s;
-        }
-
-        .dropdown {
-            position: relative;
-            display: block;
-        }
-
-        .dropdown:hover .submenu {
-            display: block;
-        }
-
-        /* Content */
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-            min-height: calc(100vh - 60px);
-            background-color: #ffffff;
-            transition: margin-left 0.3s ease;
-        }
-
-        .panel-top, .panel-main {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .panel-top:hover, .panel-main:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .header-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-menu a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        .header-menu a:hover {
-            text-decoration: underline;
-        }
-
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* PrimeFaces DataTable Styles */
-        .dataTableWrapper {
-            margin-top: 20px;
-        }
-
-        .ui-datatable {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .ui-datatable-header {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-        }
-
-        .ui-datatable-footer {
-            background-color: #f4f4f4;
-            padding: 10px;
-        }
-
-        .ui-datatable th {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .ui-datatable td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .ui-datatable tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .ui-datatable .ui-paginator {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-        }
-
-        .ui-datatable .ui-paginator .ui-button {
-            margin-left: 5px;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            nav {
-                transform: translateX(-100%);
-                position: absolute;
-            }
-
-            nav.active {
-                transform: translateX(0);
-            }
-
-            .content {
-                margin-left: 0;
-                padding: 10px;
-            }
-        }
-
-
-        /* Styling for the page size selector */
-        .pageSizeWrapper {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .pageSizeDropdown {
-            margin-left: 5px;
-        }
-
-        /* Styling for the pagination buttons */
-        .paginationButtons {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .paginationButtons {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .paginationButtons p:commandButton {
-            margin: 0 10px;
-        }
-
-        .paginationControls {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Space between controls */
-            margin-bottom: 20px; /* Space below the controls */
-        }
-
-        .labelControl {
-            font-weight: bold;
-        }
-
-        .pageSizeDropdown {
-            width: 100px; /* Set a fixed width for the dropdown */
-        }
-
-        .searchInput {
-            padding: 5px; /* Padding for better usability */
-            width: 200px; /* Width for the search input */
-        }
-
-        .searchButton {
-            padding: 5px 10px; /* Padding for the search button */
-            background-color: #007bff; /* Bootstrap primary color */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            border-radius: 4px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            text-align: center; /* Center text within the button */
-            font-size: 14px; /* Set a consistent font size */
-            transition: background-color 0.3s; /* Smooth background color transition */
-        }
-
-        .searchButton:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-
-        .searchButton:focus {
-            outline: none; /* Remove outline on focus */
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-        }
-
-        /*navigation button*/
-        .navigationButton {
-            padding: 5px 10px; /* Padding for the search button */
-            background-color: #007bff; /* Bootstrap primary color */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            border-radius: 4px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            text-align: center; /* Center text within the button */
-            font-size: 14px; /* Set a consistent font size */
-            transition: background-color 0.3s; /* Smooth background color transition */
-            display: inline-block; /* Ensure the button behaves like a block element */
-            width: 120px; /* Set a fixed width for uniformity */
-        }
-
-        .navigationButton:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-
-        .navigationButton:focus {
-            outline: none; /* Remove outline on focus */
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-        }
-
-        .navigationButton:disabled {
-            background-color: #c0c0c0; /* Light gray background for disabled state */
-            color: #6c757d; /* Bootstrap secondary color for text */
-            cursor: not-allowed; /* Change cursor to indicate disabled state */
-            opacity: 0.65; /* Slightly transparent to indicate it's disabled */
-        }
-
-        /* Create Student */
-        .form-group {
-        margin-bottom: 15px;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="text"],
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        .form-actions {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-actions h\\:commandButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            border: none;
-        }
-
-        .btn-submit {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-submit:hover {
-            background-color: #218838;
-        }
-
-        .btn-cancel {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-cancel:hover {
-            background-color: #c82333;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .form-group {
-                flex-direction: column;
-            }
-
-            .form-actions {
-                flex-direction: column;
-            }
-
-            .form-actions h\\:commandButton {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
-
-    </style>
-</h:head>
-
-<h:body>
-    <header>
-        <div class="logo">
-            <h:graphicImage name="images/logo.jpg" alt="Company Logo" class="logo"/>
-            <h1>Westartrek School Systems</h1>
-        </div>
-        <div class="header-menu">
-            <h:link value="Home" outcome="portal.xhtml"/>
-            <h:link value="About Us" outcome="portal.xhtml"/>
-            <h:link value="Contact" outcome="portal.xhtml"/>
-            <h:link value=""/>
-            <div class="dropdown">
-                <div style="margin: 0; color: white; cursor: pointer;">
-                    Profiles <span class="icon"><i class="fas fa-caret-down"></i></span>
-                </div>
-                <div class="submenu">
-                    <h:link value="Settings" outcome="portal.xhtml"/>
-                    <h:link value="Change Password" outcome="portal.xhtml"/>
-                    <h:link value="Edit" outcome="portal.xhtml"/>
-                    <h:link value="Logout" outcome="portal.xhtml"/>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <h3>Dashboard</h3>
-        <h:link value="Dashboard" outcome="portal.xhtml"/>
-        <h3>Student Management</h3>
-        <h:link value="Create Student" outcome="create-student.xhtml"/>
-        <div class="dropdown">
-            <h3 style="margin: 0; cursor: pointer;">
-                Settings <span class="icon"><i class="fas fa-caret-down"></i></span>
-            </h3>
-            <div class="submenu">
-                <h:link value="Account Settings" outcome="portal.xhtml"/>
-                <h:link value="Logout" outcome="portal.xhtml"/>
-            </div>
-        </div>
-    </nav>
-
-    <div class="content">
-        <div class="panel-top">
-            <h2>Students Record Management</h2>
-            <p>This page shows the list of all students. You can search, filter, edit, view more detailed information and delete.</p>
-        </div>
-
-        <div class="panel-main">
-            <h2>List of Students</h2>
-
-            <h:form id="studentForm">
-                <h:panelGrid columns="1" styleClass="dataTableWrapper">
-
-                    <!-- Page Size Selector Dropdown -->
-                    <!-- Page Size Selector and Search Input -->
-                    <h:panelGroup class="paginationControls">
-                        <h:outputLabel value="Rows per page: " class="labelControl"/>
-                        <h:selectOneMenu value="#{studentBean.pageSize}" class="pageSizeDropdown">
-                            <f:selectItem itemValue="5" itemLabel="5"/>
-                            <f:selectItem itemValue="10" itemLabel="10"/>
-                            <f:selectItem itemValue="25" itemLabel="25"/>
-                            <f:selectItem itemValue="50" itemLabel="50"/>
-                            <f:selectItem itemValue="100" itemLabel="100"/>
-                            <p:ajax listener="#{studentBean.onPageSizeChange}" update="studentForm:studentTable"/>
-                        </h:selectOneMenu>
-
-                        <h:outputLabel value="Search: " for="searchInput" class="labelControl"/>
-                        <h:inputText id="searchInput" value="#{studentBean.filterValue}"
-                                     placeholder="Search by name or ID" class="searchInput"/>
-                        <h:commandButton value="Search" action="#{studentBean.search}"
-                                         update="studentForm:studentTable" class="searchButton"/>
-                    </h:panelGroup>
-
-                    <p:dataTable id="studentTable" value="#{studentBean.students}" var="student"
-                                 paginator="false" rows="#{studentBean.pageSize}"
-                                 paginatorPosition="bottom"
-                                 emptyMessage="No students found."
-                                 style="width:100%"
-                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,25,50,100"
-                                 lazy="false"
-                                 sortBy="#{studentBean.sortBy}"
-                                 filterBy="#{studentBean.filterValue}"
-                                 rowKey="#{student.studentId}"
-                                 widgetVar="studentTable">
-
-                        <!-- Columns with Sorting and Filtering -->
-                        <p:column headerText="ID" sortBy="#{student.studentId}" filterBy="#{student.studentId}">
-                            <h:outputText value="#{student.studentId}"/>
-                        </p:column>
-
-                        <p:column headerText="First Name" sortBy="#{student.firstName}" filterBy="#{student.firstName}">
-                            <h:outputText value="#{student.firstName}"/>
-                        </p:column>
-
-                        <p:column headerText="Last Name" sortBy="#{student.lastName}" filterBy="#{student.lastName}">
-                            <h:outputText value="#{student.lastName}"/>
-                        </p:column>
-
-                        <p:column headerText="Gender" sortBy="#{student.gender}" filterBy="#{student.gender}">
-                            <h:outputText value="#{student.gender}"/>
-                        </p:column>
-
-                        <p:column headerText="Current Grade" sortBy="#{student.currentGrade}"
-                                  filterBy="#{student.currentGrade}">
-                            <h:outputText value="#{student.currentGrade}"/>
-                        </p:column>
-
-                        <p:column headerText="Status" sortBy="#{student.studentStatus}"
-                                  filterBy="#{student.studentStatus}">
-                            <h:outputText value="#{student.studentStatus}"/>
-                        </p:column>
-
-                        <p:column headerText="Actions">
-                            <p:commandButton value="Edit" action="#{studentBean.edit(student)}" update="@form"/>
-                            <p:commandButton value="View" action="#{studentBean.view(student)}" update="@form"
-                                             oncomplete="PF('studentDialog').show()"/>
-                        </p:column>
-
-                    </p:dataTable>
-
-                    <!-- Display current page number -->
-                    <h:outputText value="Current Page: #{studentBean.pageNumber + 1}"/>
-
-                    <!--                    <h:panelGroup styleClass="paginationButtons">-->
-                    <!--                        <p:commandButton value="Previous" action="#{studentBean.previousPage}"-->
-                    <!--                                         update="studentForm:studentTable"-->
-                    <!--                                         disabled="#{studentBean.pageNumber == 0}" enabled="#{studentBean.pageNumber > 0}" />-->
-                    <!--                        <p:commandButton value="Next" action="#{studentBean.nextPage}"-->
-                    <!--                                         update="studentForm:studentTable"-->
-                    <!--                                         disabled="#{studentBean.pageNumber >= studentBean.totalPages}"/>-->
-                    <!--                    </h:panelGroup>-->
-
-                    <h:panelGroup styleClass="paginationButtons">
-                        <h:commandButton value="Previous" action="#{studentBean.previousPage}"
-                                         disabled="#{studentBean.pageNumber == 0}" class="navigationButton" />
-                        <h:outputText value=" " />
-                        <h:commandButton value="Next" action="#{studentBean.nextPage}"
-                                         disabled="#{studentBean.pageNumber >= studentBean.totalPages}" class="navigationButton" />
-
-                    </h:panelGroup>
-
-                </h:panelGrid>
-            </h:form>
-
-
-            <!--            <h:form id="studentForm">-->
-            <!--                <h:panelGrid columns="1" styleClass="dataTableWrapper">-->
-
-            <!--                    &lt;!&ndash; Page Size Selector Dropdown &ndash;&gt;-->
-            <!--                    <h:panelGroup>-->
-            <!--                        <h:outputLabel value="Rows per page: "/>-->
-            <!--                        <h:selectOneMenu value="#{studentBean.pageSize}">-->
-            <!--                            <f:selectItem itemValue="5" itemLabel="5"/>-->
-            <!--                            <f:selectItem itemValue="10" itemLabel="10"/>-->
-            <!--                            <f:selectItem itemValue="25" itemLabel="25"/>-->
-            <!--                            <f:selectItem itemValue="50" itemLabel="50"/>-->
-            <!--                            <f:selectItem itemValue="100" itemLabel="100"/>-->
-            <!--                            <p:ajax listener="#{studentBean.onPageSizeChange}" update="studentForm:studentTable"/>-->
-            <!--                        </h:selectOneMenu>-->
-            <!--                    </h:panelGroup>-->
-
-            <!--                    <p:dataTable id="studentTable" value="#{studentBean.students}" var="student"-->
-            <!--                                 paginator="true" rows="#{studentBean.pageSize}"-->
-            <!--                                 paginatorPosition="bottom"-->
-            <!--                                 emptyMessage="No students found."-->
-            <!--                                 style="width:100%"-->
-            <!--                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"-->
-            <!--                                 rowsPerPageTemplate="5,10,25,50,100"-->
-            <!--                                 lazy="false">-->
-
-            <!--                        &lt;!&ndash; Event Listener for Page Change &ndash;&gt;-->
-            <!--                        <p:ajax event="page" listener="#{studentBean.onPageChange}" update="studentForm:studentTable"/>-->
-
-            <!--                        &lt;!&ndash; Table Columns &ndash;&gt;-->
-            <!--                        <p:column headerText="ID">-->
-            <!--                            <h:outputText value="#{student.studentId}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="First Name">-->
-            <!--                            <h:outputText value="#{student.firstName}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Last Name">-->
-            <!--                            <h:outputText value="#{student.lastName}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Gender">-->
-            <!--                            <h:outputText value="#{student.gender}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Current Grade">-->
-            <!--                            <h:outputText value="#{student.currentGrade}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Status">-->
-            <!--                            <h:outputText value="#{student.studentStatus}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Actions">-->
-            <!--                            <p:commandButton value="Edit" action="#{studentBean.edit(student)}" update="@form"/>-->
-            <!--                            <p:commandButton value="Delete" action="#{studentBean.delete(student)}" update="@form"-->
-            <!--                                             oncomplete="PF('studentDialog').show()"/>-->
-            <!--                        </p:column>-->
-
-            <!--                    </p:dataTable>-->
-
-            <!--                    &lt;!&ndash; Display current page number &ndash;&gt;-->
-            <!--                    <h:outputText value="Current Page: #{studentBean.pageNumber + 1}"/>-->
-
-            <!--                    <h:panelGroup styleClass="paginationButtons">-->
-            <!--                        <h:commandButton value="Previous" action="#{studentBean.previousPage}"-->
-            <!--                                         disabled="#{studentBean.pageNumber == 0}"/>-->
-            <!--                        <h:commandButton value="Next" action="#{studentBean.nextPage}"-->
-            <!--                                         disabled="#{studentBean.pageNumber >= studentBean.totalPages}" />-->
-
-            <!--                    </h:panelGroup>-->
-
-            <!--                </h:panelGrid>-->
-            <!--            </h:form>-->
-
-
-            <!--            <h:form id="studentForm">-->
-            <!--                <h:panelGrid columns="1" styleClass="dataTableWrapper">-->
-
-            <!--                    &lt;!&ndash; Page Size Selector &ndash;&gt;-->
-            <!--                    <h:panelGroup styleClass="pageSizeWrapper">-->
-            <!--                        <h:outputLabel for="pageSizeSelect" value="Rows per page: " />-->
-            <!--                        <p:selectOneMenu id="pageSizeSelect" value="#{studentBean.pageSize}" styleClass="pageSizeDropdown" style="width: auto;">-->
-            <!--                            <f:selectItem itemValue="5" itemLabel="5" />-->
-            <!--                            <f:selectItem itemValue="10" itemLabel="10" />-->
-            <!--                            <f:selectItem itemValue="25" itemLabel="25" />-->
-            <!--                            <f:selectItem itemValue="50" itemLabel="50" />-->
-            <!--                            <f:selectItem itemValue="100" itemLabel="100" />-->
-            <!--                            <p:ajax event="change" listener="#{studentBean.loadStudents}" update="studentForm:studentTable" />-->
-            <!--                        </p:selectOneMenu>-->
-            <!--                    </h:panelGroup>-->
-
-            <!--                    <p:dataTable id="studentTable" value="#{studentBean.students}" var="student" paginator="true"-->
-            <!--                                 rows="#{studentBean.pageSize}" emptyMessage="No students found." style="width:100%">-->
-
-            <!--                        <p:column headerText="ID">-->
-            <!--                            <h:outputText value="#{student.studentId}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="First Name">-->
-            <!--                            <h:outputText value="#{student.firstName}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Last Name">-->
-            <!--                            <h:outputText value="#{student.lastName}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Gender">-->
-            <!--                            <h:outputText value="#{student.gender}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Current Grade">-->
-            <!--                            <h:outputText value="#{student.currentGrade}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Status">-->
-            <!--                            <h:outputText value="#{student.studentStatus}"/>-->
-            <!--                        </p:column>-->
-
-            <!--                        <p:column headerText="Actions">-->
-            <!--                            <p:commandButton value="Edit" action="#{studentBean.edit(student)}" update="@form"/>-->
-            <!--                            <p:commandButton value="Delete" action="#{studentBean.delete(student)}" update="@form"-->
-            <!--                                             oncomplete="PF('studentDialog').show()"/>-->
-            <!--                        </p:column>-->
-
-            <!--                    </p:dataTable>-->
-
-            <!--                    &lt;!&ndash; Pagination Buttons &ndash;&gt;-->
-            <!--                    <h:panelGroup styleClass="paginationButtons">-->
-            <!--                        <h:commandButton value="Previous" action="#{studentBean.previousPage}"-->
-            <!--                                         disabled="#{studentBean.pageNumber == 1}"/>-->
-            <!--                        <h:commandButton value="Next" action="#{studentBean.nextPage}"-->
-            <!--                                         disabled="#{studentBean.pageNumber * studentBean.pageSize >= studentBean.totalStudents}"/>-->
-            <!--                    </h:panelGroup>-->
-            <!--                </h:panelGrid>-->
-            <!--            </h:form>-->
-        </div>
-    </div>
-
-    <footer>
-        © <span id="currentYear"/> Webstartrek. All rights reserved.
-    </footer>
-    <script>
-        // Get the current year
-        const currentYear = new Date().getFullYear();
-
-        // Set the current year in the footer
-        document.getElementById('currentYear').textContent = currentYear;
-    </script>
-</h:body>
+<f:view contentType="text/html" contracts="common,device-desktop,theme-#{theme.name}">
+    <ui:composition template="/templates/page-template.xhtml">
+        <ui:param name="pageTitle" value="Create Student"/>
+        <!--        <ui:define name="panel-nav">-->
+        <!--            <section>-->
+        <!--                <h1>Create New Student</h1>-->
+        <!--                <p>Please enter details about the student.</p>-->
+        <!--            </section>-->
+        <!--        </ui:define>-->
+        <ui:define name="panel-main">
+            <section>
+                <h:messages id="validation-messages" styleClass="validation-messages"/>
+                <h:body>
+
+                    <div class="content">
+                        <div class="panel-top">
+                            <h2>Students Record Management</h2>
+                            <p>This page shows the list of all students. You can search, filter, edit, view more
+                                detailed information and delete.</p>
+                        </div>
+
+                        <div class="panel-main">
+                            <h2>List of Students</h2>
+
+                            <h:form id="studentForm">
+                                <h:panelGrid columns="1" styleClass="dataTableWrapper">
+
+                                    <!-- Page Size Selector Dropdown -->
+                                    <!-- Page Size Selector and Search Input -->
+                                    <h:panelGroup class="paginationControls">
+                                        <h:outputLabel value="Rows per page: " class="labelControl"/>
+                                        <h:selectOneMenu value="#{studentBean.pageSize}" class="pageSizeDropdown">
+                                            <f:selectItem itemValue="5" itemLabel="5"/>
+                                            <f:selectItem itemValue="10" itemLabel="10"/>
+                                            <f:selectItem itemValue="25" itemLabel="25"/>
+                                            <f:selectItem itemValue="50" itemLabel="50"/>
+                                            <f:selectItem itemValue="100" itemLabel="100"/>
+                                            <p:ajax listener="#{studentBean.onPageSizeChange}"
+                                                    update="studentForm:studentTable"/>
+                                        </h:selectOneMenu>
+
+                                        <h:outputLabel value="Search: " for="searchInput" class="labelControl"/>
+                                        <h:inputText id="searchInput" value="#{studentBean.filterValue}"
+                                                     placeholder="Search by name or ID" class="searchInput"/>
+                                        <h:commandButton value="Search" action="#{studentBean.search}"
+                                                         update="studentForm:studentTable" class="searchButton"/>
+                                    </h:panelGroup>
+
+                                    <p:dataTable id="studentTable" value="#{studentBean.students}" var="student"
+                                                 paginator="false" rows="#{studentBean.pageSize}"
+                                                 paginatorPosition="bottom"
+                                                 emptyMessage="No students found."
+                                                 style="width:100%"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 rowsPerPageTemplate="5,10,25,50,100"
+                                                 lazy="false"
+                                                 sortBy="#{studentBean.sortBy}"
+                                                 filterBy="#{studentBean.filterValue}"
+                                                 rowKey="#{student.studentId}"
+                                                 widgetVar="studentTable">
+
+                                        <!-- Columns with Sorting and Filtering -->
+                                        <p:column headerText="ID" sortBy="#{student.studentId}"
+                                                  filterBy="#{student.studentId}">
+                                            <h:outputText value="#{student.studentId}"/>
+                                        </p:column>
+
+                                        <p:column headerText="First Name" sortBy="#{student.firstName}"
+                                                  filterBy="#{student.firstName}">
+                                            <h:outputText value="#{student.firstName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Last Name" sortBy="#{student.lastName}"
+                                                  filterBy="#{student.lastName}">
+                                            <h:outputText value="#{student.lastName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Gender" sortBy="#{student.gender}"
+                                                  filterBy="#{student.gender}">
+                                            <h:outputText value="#{student.gender}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Current Grade" sortBy="#{student.currentGrade}"
+                                                  filterBy="#{student.currentGrade}">
+                                            <h:outputText value="#{student.currentGrade}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Status" sortBy="#{student.studentStatus}"
+                                                  filterBy="#{student.studentStatus}">
+                                            <h:outputText value="#{student.studentStatus}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Actions">
+                                            <p:commandButton value="Edit" action="#{studentBean.edit(student)}"
+                                                             update="@form"/>
+                                            <p:commandButton value="View" action="#{studentBean.view(student)}"
+                                                             update="@form"
+                                                             oncomplete="PF('studentDialog').show()"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                    <!-- Display current page number -->
+                                    <h:outputText value="Current Page: #{studentBean.pageNumber + 1}"/>
+
+                                    <!--                    <h:panelGroup styleClass="paginationButtons">-->
+                                    <!--                        <p:commandButton value="Previous" action="#{studentBean.previousPage}"-->
+                                    <!--                                         update="studentForm:studentTable"-->
+                                    <!--                                         disabled="#{studentBean.pageNumber == 0}" enabled="#{studentBean.pageNumber > 0}" />-->
+                                    <!--                        <p:commandButton value="Next" action="#{studentBean.nextPage}"-->
+                                    <!--                                         update="studentForm:studentTable"-->
+                                    <!--                                         disabled="#{studentBean.pageNumber >= studentBean.totalPages}"/>-->
+                                    <!--                    </h:panelGroup>-->
+
+                                    <h:panelGroup styleClass="paginationButtons">
+                                        <h:commandButton value="Previous" action="#{studentBean.previousPage}"
+                                                         disabled="#{studentBean.pageNumber == 0}"
+                                                         class="navigationButton"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandButton value="Next" action="#{studentBean.nextPage}"
+                                                         disabled="#{studentBean.pageNumber >= studentBean.totalPages}"
+                                                         class="navigationButton"/>
+
+                                    </h:panelGroup>
+
+                                </h:panelGrid>
+                            </h:form>
+
+                        </div>
+                    </div>
+
+                </h:body>
+            </section>
+        </ui:define>
+    </ui:composition>
+</f:view>
 </html>

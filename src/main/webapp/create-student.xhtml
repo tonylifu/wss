@@ -4,620 +4,107 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-    <title>Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-            position: relative;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            height: auto; /* Maintain aspect ratio */
-            opacity: 0.7;
-            border-radius: 50%;
-            background-size: cover;
-        }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #333;
-            color: white;
-            height: calc(100vh - 60px);
-            width: 250px;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-
-        nav h3 {
-            color: white;
-            margin: 10px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-            margin-bottom: 5px;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #575757;
-        }
-
-        .submenu {
-            margin-left: 20px;
-            display: none;
-            position: relative;
-            background-color: #444;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1;
-        }
-
-        .submenu a {
-            padding: 5px;
-            transition: background 0.3s;
-        }
-
-        .dropdown {
-            position: relative;
-            display: block;
-        }
-
-        .dropdown:hover .submenu {
-            display: block;
-        }
-
-        /* Content */
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-            min-height: calc(100vh - 60px);
-            background-color: #ffffff;
-            transition: margin-left 0.3s ease;
-        }
-
-        .panel-top, .panel-main {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .panel-top:hover, .panel-main:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .header-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-menu a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        .header-menu a:hover {
-            text-decoration: underline;
-        }
-
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* PrimeFaces DataTable Styles */
-        .dataTableWrapper {
-            margin-top: 20px;
-        }
-
-        .ui-datatable {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .ui-datatable-header {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-        }
-
-        .ui-datatable-footer {
-            background-color: #f4f4f4;
-            padding: 10px;
-        }
-
-        .ui-datatable th {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .ui-datatable td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .ui-datatable tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .ui-datatable .ui-paginator {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-        }
-
-        .ui-datatable .ui-paginator .ui-button {
-            margin-left: 5px;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            nav {
-                transform: translateX(-100%);
-                position: absolute;
-            }
-
-            nav.active {
-                transform: translateX(0);
-            }
-
-            .content {
-                margin-left: 0;
-                padding: 10px;
-            }
-        }
-
-
-        /* Styling for the page size selector */
-        .pageSizeWrapper {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .pageSizeDropdown {
-            margin-left: 5px;
-        }
-
-        /* Styling for the pagination buttons */
-        .paginationButtons {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .paginationButtons {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .paginationButtons p:commandButton {
-            margin: 0 10px;
-        }
-
-        .paginationControls {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Space between controls */
-            margin-bottom: 20px; /* Space below the controls */
-        }
-
-        .labelControl {
-            font-weight: bold;
-        }
-
-        .pageSizeDropdown {
-            width: 100px; /* Set a fixed width for the dropdown */
-        }
-
-        .searchInput {
-            padding: 5px; /* Padding for better usability */
-            width: 200px; /* Width for the search input */
-        }
-
-        .searchButton {
-            padding: 5px 10px; /* Padding for the search button */
-            background-color: #007bff; /* Bootstrap primary color */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            border-radius: 4px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            text-align: center; /* Center text within the button */
-            font-size: 14px; /* Set a consistent font size */
-            transition: background-color 0.3s; /* Smooth background color transition */
-        }
-
-        .searchButton:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-
-        .searchButton:focus {
-            outline: none; /* Remove outline on focus */
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-        }
-
-        /*navigation button*/
-        .navigationButton {
-            padding: 5px 10px; /* Padding for the search button */
-            background-color: #007bff; /* Bootstrap primary color */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            border-radius: 4px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            text-align: center; /* Center text within the button */
-            font-size: 14px; /* Set a consistent font size */
-            transition: background-color 0.3s; /* Smooth background color transition */
-            display: inline-block; /* Ensure the button behaves like a block element */
-            width: 120px; /* Set a fixed width for uniformity */
-        }
-
-        .navigationButton:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-
-        .navigationButton:focus {
-            outline: none; /* Remove outline on focus */
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-        }
-
-        .navigationButton:disabled {
-            background-color: #c0c0c0; /* Light gray background for disabled state */
-            color: #6c757d; /* Bootstrap secondary color for text */
-            cursor: not-allowed; /* Change cursor to indicate disabled state */
-            opacity: 0.65; /* Slightly transparent to indicate it's disabled */
-        }
-
-        /* Create Student */
-        .form-group {
-        margin-bottom: 15px;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="text"],
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        .form-actions {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-actions h\\:commandButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            border: none;
-        }
-
-        .btn-submit {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-submit:hover {
-            background-color: #218838;
-        }
-
-        .btn-cancel {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-cancel:hover {
-            background-color: #c82333;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .form-group {
-                flex-direction: column;
-            }
-
-            .form-actions {
-                flex-direction: column;
-            }
-
-            .form-actions h\\:commandButton {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
-
-    </style>
-</h:head>
-
-<h:body>
-    <header>
-        <div class="logo">
-            <h:graphicImage name="images/logo.jpg" alt="Company Logo" class="logo"/>
-            <h1>Westartrek School Systems</h1>
-        </div>
-        <div class="header-menu">
-            <h:link value="Home" outcome="portal.xhtml"/>
-            <h:link value="About Us" outcome="portal.xhtml"/>
-            <h:link value="Contact" outcome="portal.xhtml"/>
-            <h:link value=""/>
-            <div class="dropdown">
-                <div style="margin: 0; color: white; cursor: pointer;">
-                    Profiles <span class="icon"><i class="fas fa-caret-down"></i></span>
-                </div>
-                <div class="submenu">
-                    <h:link value="Settings" outcome="portal.xhtml"/>
-                    <h:link value="Change Password" outcome="portal.xhtml"/>
-                    <h:link value="Edit" outcome="portal.xhtml"/>
-                    <h:link value="Logout" outcome="portal.xhtml"/>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <h3>Dashboard</h3>
-        <h:link value="Dashboard" outcome="portal.xhtml"/>
-        <h3>Student Management</h3>
-        <h:link value="Create Student" outcome="create-student.xhtml"/>
-        <div class="dropdown">
-            <h3 style="margin: 0; cursor: pointer;">
-                Settings <span class="icon"><i class="fas fa-caret-down"></i></span>
-            </h3>
-            <div class="submenu">
-                <h:link value="Account Settings" outcome="portal.xhtml"/>
-                <h:link value="Logout" outcome="portal.xhtml"/>
-            </div>
-        </div>
-    </nav>
-
-    <div class="content">
-        <div class="panel-top">
-            <h2>Students Record Management</h2>
-            <p>This page provides you with the form to create a new student record.</p>
-        </div>
-
-        <div class="panel-main">
-            <h2>Create a new student</h2>
-
-            <h:form id="createStudentForm" styleClass="createStudentForm">
-
-                <!-- First Name -->
-                <div class="form-group">
-                    <h:outputLabel for="firstName" value="First Name:" />
-                    <h:inputText id="firstName" value="#{createStudentBean.firstName}" required="true"
-                                 aria-required="true" requiredMessage="First Name is required!" />
-                    <h:message for="firstName" class="error-message" />
-                </div>
-
-                <!-- Middle Name -->
-                <div class="form-group">
-                    <h:outputLabel for="middleName" value="Middle Name:" />
-                    <h:inputText id="middleName" value="#{createStudentBean.middleName}" />
-                </div>
-
-                <!-- Last Name -->
-                <div class="form-group">
-                    <h:outputLabel for="lastName" value="Last Name:" />
-                    <h:inputText id="lastName" value="#{createStudentBean.lastName}" required="true"
-                                 aria-required="true" requiredMessage="Last Name is required!" />
-                    <h:message for="lastName" class="error-message" />
-                </div>
-
-                <!-- Date of Birth -->
-                <div class="form-group">
-                    <h:outputLabel for="dob" value="Date of Birth:" />
-                    <h:inputText id="dob" value="#{createStudentBean.dob}" required="true"
-                                 aria-required="true" requiredMessage="Date of Birth is required!" />
-                    <h:message for="dob" class="error-message" />
-                </div>
-
-                <!-- Gender -->
-                <div class="form-group">
-                    <h:outputLabel for="gender" value="Gender:" />
-                    <h:selectOneMenu id="gender" value="#{createStudentBean.gender}">
-                        <f:selectItem itemValue="MALE" itemLabel="Male" />
-                        <f:selectItem itemValue="FEMALE" itemLabel="Female" />
-                        <f:selectItem itemValue="OTHER" itemLabel="Other" />
-                    </h:selectOneMenu>
-                </div>
-
-                <!-- Current Grade -->
-                <div class="form-group">
-                    <h:outputLabel for="currentGrade" value="Current Grade:" />
-                    <h:inputText id="currentGrade" value="#{createStudentBean.currentGrade}" required="true"
-                                 aria-required="true" requiredMessage="Current Grade is required!" />
-                    <h:message for="currentGrade" class="error-message" />
-                </div>
-
-                <!-- Disabled Checkbox -->
-                <div class="form-group">
-                    <h:outputLabel for="isDisabled" value="Disabled:" />
-                    <h:selectBooleanCheckbox id="isDisabled" value="#{createStudentBean.isDisabled}" />
-                </div>
-
-                <!-- Disability Details -->
-                <div class="form-group">
-                    <h:outputLabel for="disabilityDetails" value="Disability Details:" />
-                    <h:inputText id="disabilityDetails" value="#{createStudentBean.disabilityDetails}" />
-                </div>
-
-                <!-- Form Actions -->
-                <div class="form-actions">
-                    <h:commandButton value="Submit" action="#{createStudentBean.createStudent()}" class="btn-submit" />
-                    <h:commandButton value="Cancel" action="portal" class="btn-cancel" />
-                </div>
-
-            </h:form>
-
-<!--            <h:form id="createStudentForm" styleClass="createStudentForm">-->
-
-<!--                <h:panelGrid columns="2" styleClass="formGrid" columnClasses="formLabelCol, formFieldCol" responsive="true">-->
-
-<!--                    &lt;!&ndash; First Name &ndash;&gt;-->
-<!--                    <h:outputLabel for="firstName" value="First Name:" class="formLabel" />-->
-<!--                    <h:inputText id="firstName" value="#{createStudentBean.firstName}" required="true"-->
-<!--                                 aria-required="true" requiredMessage="First Name is required!" class="formField" />-->
-<!--                    <h:message for="firstName" styleClass="errorMessage" />-->
-
-<!--                    &lt;!&ndash; Middle Name &ndash;&gt;-->
-<!--                    <h:outputLabel for="middleName" value="Middle Name:" class="formLabel" />-->
-<!--                    <h:inputText id="middleName" value="#{createStudentBean.middleName}" class="formField" />-->
-
-<!--                    &lt;!&ndash; Last Name &ndash;&gt;-->
-<!--                    <h:outputLabel for="lastName" value="Last Name:" class="formLabel" />-->
-<!--                    <h:inputText id="lastName" value="#{createStudentBean.lastName}" required="true"-->
-<!--                                 aria-required="true" requiredMessage="Last Name is required!" class="formField" />-->
-<!--                    <h:message for="lastName" styleClass="errorMessage" />-->
-
-<!--                    &lt;!&ndash; Date of Birth &ndash;&gt;-->
-<!--                    <h:outputLabel for="dob" value="Date of Birth:" class="formLabel" />-->
-<!--                    <h:inputText id="dob" value="#{createStudentBean.dob}" required="true"-->
-<!--                                 aria-required="true" requiredMessage="Date of Birth is required!"-->
-<!--                                 class="formField" />-->
-<!--                    <h:message for="dob" styleClass="errorMessage" />-->
-
-<!--                    &lt;!&ndash; Gender &ndash;&gt;-->
-<!--                    <h:outputLabel for="gender" value="Gender:" class="formLabel" />-->
-<!--                    <h:selectOneMenu id="gender" value="#{createStudentBean.gender}" class="formField">-->
-<!--                        <f:selectItem itemValue="MALE" itemLabel="Male" />-->
-<!--                        <f:selectItem itemValue="FEMALE" itemLabel="Female" />-->
-<!--                        <f:selectItem itemValue="OTHER" itemLabel="Other" />-->
-<!--                    </h:selectOneMenu>-->
-
-<!--                    &lt;!&ndash; Current Grade &ndash;&gt;-->
-<!--                    <h:outputLabel for="currentGrade" value="Current Grade:" class="formLabel" />-->
-<!--                    <h:inputText id="currentGrade" value="#{createStudentBean.currentGrade}" required="true"-->
-<!--                                 aria-required="true" requiredMessage="Current Grade is required!" class="formField" />-->
-<!--                    <h:message for="currentGrade" styleClass="errorMessage" />-->
-
-<!--                    &lt;!&ndash; Disabled Checkbox &ndash;&gt;-->
-<!--                    <h:outputLabel for="isDisabled" value="Disabled:" class="formLabel" />-->
-<!--                    <h:selectBooleanCheckbox id="isDisabled" value="#{createStudentBean.isDisabled}" class="formField" />-->
-
-<!--                    &lt;!&ndash; Disability Details &ndash;&gt;-->
-<!--                    <h:outputLabel for="disabilityDetails" value="Disability Details:" class="formLabel" />-->
-<!--                    <h:inputText id="disabilityDetails" value="#{createStudentBean.disabilityDetails}" class="formField" />-->
-
-<!--&lt;!&ndash;                    <h:outputLabel for="disabilityDetails" value="Disability Details:" class="formLabel" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    <h:inputText id="disabilityDetails" value="#{createStudentBean.disabilityDetails}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                 rendered="#{createStudentBean.isDisabled}" class="formField" />&ndash;&gt;-->
-
-<!--                    &lt;!&ndash; Buttons for Form Actions &ndash;&gt;-->
-<!--                    <h:panelGroup styleClass="createStudentButtons">-->
-<!--                        <p:commandButton value="Submit" action="#{createStudentBean.createStudent()}" update="@form" class="navigationButton" />-->
-<!--                        <p:commandButton value="Cancel" action="portal" class="navigationButton" />-->
-<!--                    </h:panelGroup>-->
-
-<!--                </h:panelGrid>-->
-
-<!--            </h:form>-->
-
-        </div>
-    </div>
-
-    <footer>
-        © <span id="currentYear"/> Webstartrek. All rights reserved.
-    </footer>
-    <script>
-        // Get the current year
-        const currentYear = new Date().getFullYear();
-
-        // Set the current year in the footer
-        document.getElementById('currentYear').textContent = currentYear;
-    </script>
-</h:body>
+<f:view contentType="text/html" contracts="common,device-desktop,theme-#{theme.name}">
+    <ui:composition template="/templates/page-template.xhtml">
+        <ui:param name="pageTitle" value="Create Student"/>
+<!--        <ui:define name="panel-nav">-->
+<!--            <section>-->
+<!--                <h1>Create New Student</h1>-->
+<!--                <p>Please enter details about the student.</p>-->
+<!--            </section>-->
+<!--        </ui:define>-->
+        <ui:define name="panel-main">
+            <section>
+                <h:messages id="validation-messages" styleClass="validation-messages"/>
+                <h:body>
+
+                    <div class="content">
+                        <div class="panel-top">
+                            <h2>Students Record Management</h2>
+                            <p>This page provides you with the form to create a new student record.</p>
+                        </div>
+
+                        <div class="panel-main">
+                            <h2>Create a new student</h2>
+
+                            <h:form id="createStudentForm" styleClass="createStudentForm">
+
+                                <!-- First Name -->
+                                <div class="form-group">
+                                    <h:outputLabel for="firstName" value="First Name:"/>
+                                    <h:inputText id="firstName" value="#{createStudentBean.firstName}" required="true"
+                                                 aria-required="true" requiredMessage="First Name is required!"/>
+                                    <h:message for="firstName" class="error-message"/>
+                                </div>
+
+                                <!-- Middle Name -->
+                                <div class="form-group">
+                                    <h:outputLabel for="middleName" value="Middle Name:"/>
+                                    <h:inputText id="middleName" value="#{createStudentBean.middleName}"/>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="form-group">
+                                    <h:outputLabel for="lastName" value="Last Name:"/>
+                                    <h:inputText id="lastName" value="#{createStudentBean.lastName}" required="true"
+                                                 aria-required="true" requiredMessage="Last Name is required!"/>
+                                    <h:message for="lastName" class="error-message"/>
+                                </div>
+
+                                <!-- Date of Birth -->
+                                <div class="form-group">
+                                    <h:outputLabel for="dob" value="Date of Birth:"/>
+                                    <h:inputText id="dob" value="#{createStudentBean.dob}" required="true"
+                                                 aria-required="true" requiredMessage="Date of Birth is required!"/>
+                                    <h:message for="dob" class="error-message"/>
+                                </div>
+
+                                <!-- Gender -->
+                                <div class="form-group">
+                                    <h:outputLabel for="gender" value="Gender:"/>
+                                    <h:selectOneMenu id="gender" value="#{createStudentBean.gender}">
+                                        <f:selectItem itemValue="MALE" itemLabel="Male"/>
+                                        <f:selectItem itemValue="FEMALE" itemLabel="Female"/>
+                                        <f:selectItem itemValue="OTHER" itemLabel="Other"/>
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <!-- Current Grade -->
+                                <div class="form-group">
+                                    <h:outputLabel for="currentGrade" value="Current Grade:"/>
+                                    <h:inputText id="currentGrade" value="#{createStudentBean.currentGrade}"
+                                                 required="true"
+                                                 aria-required="true" requiredMessage="Current Grade is required!"/>
+                                    <h:message for="currentGrade" class="error-message"/>
+                                </div>
+
+                                <!-- Disabled Checkbox -->
+                                <div class="form-group">
+                                    <h:outputLabel for="isDisabled" value="Disabled:"/>
+                                    <h:selectBooleanCheckbox id="isDisabled" value="#{createStudentBean.isDisabled}"/>
+                                </div>
+
+                                <!-- Disability Details -->
+                                <div class="form-group">
+                                    <h:outputLabel for="disabilityDetails" value="Disability Details:"/>
+                                    <h:inputText id="disabilityDetails" value="#{createStudentBean.disabilityDetails}"/>
+                                </div>
+
+                                <!-- Form Actions -->
+                                <div class="form-actions">
+                                    <h:commandButton value="Submit" action="#{createStudentBean.createStudent()}"
+                                                     class="btn-submit"/>
+                                    <h:commandButton value="Cancel" action="portal" class="btn-cancel"/>
+                                </div>
+
+                            </h:form>
+
+                        </div>
+                    </div>
+
+                </h:body>
+            </section>
+        </ui:define>
+    </ui:composition>
+</f:view>
 </html>

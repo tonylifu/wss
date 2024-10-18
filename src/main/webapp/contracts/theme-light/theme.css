@@ -1,69 +1,415 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Using a modern, legible font */
+}
+
+/* General Styles */
 body {
-    background-color: #e5e5e5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
 }
 
-a:link, a:visited {
-    color: #1f778d;
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    position: relative;
 }
 
-a:hover, a:active {
-    color: #76cbe0;
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
 }
 
-input, select {
-    background-color: white;
-    color: black;
-    border: 1px solid #808080;
-    padding: 0.25em;
+.logo {
+    display: flex;
+    align-items: center;
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.7;
+    border-radius: 50%;
+    background-size: cover;
 }
 
-option {
-    background-color: white;
-    color: black;
+.logo img {
+    height: 40px;
+    margin-right: 10px;
 }
 
-input[readonly] {
-    color: #808080;
+/* Navigation */
+nav {
+    background-color: #333;
+    color: white;
+    height: calc(100vh - 60px);
+    width: 250px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
-input[type="submit"], input[type="button"] {
-    border-radius: 0.25em;
-    padding: 0.25em 0.75em;
+nav h3 {
+    color: white;
+    margin: 10px 0;
 }
 
-body > header {
-    background-color: #2a9fbc; /*#f15b2a;*/
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    margin-bottom: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+.submenu {
+    margin-left: 20px;
+    display: none;
+    position: relative;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.submenu a {
+    padding: 5px;
+    transition: background 0.3s;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* Content */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+    background-color: #ffffff;
+    transition: margin-left 0.3s ease;
+}
+
+.panel-top, .panel-main {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.panel-top:hover, .panel-main:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.header-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
     color: white;
 }
 
-body > section, body > form > section {
-    background-color: white;
-    color: black;
+tr:hover {
+    background-color: #f1f1f1;
 }
 
-body > footer {
-    background-color: #2a9fbc;
-    color: #e5e5e5;
+/* PrimeFaces DataTable Styles */
+.dataTableWrapper {
+    margin-top: 20px;
 }
 
-.shoppingcart-header {
-    background-color: #f15b2a;
+.ui-datatable {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ui-datatable-header {
+    background-color: #4CAF50;
     color: white;
+    font-weight: bold;
+    padding: 10px;
 }
 
-.shoppingcart-row-odd {
-    background-color: #e0e0e0;
+.ui-datatable-footer {
+    background-color: #f4f4f4;
+    padding: 10px;
 }
 
-.shoppingcart-row-even {
-    background-color: #f0f0f0;
+.ui-datatable th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
 }
 
-.shoppingcart-footer {
-    background-color: #2a9fbc;
-    color: white;
+.ui-datatable td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-.validation-messages {
+.ui-datatable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.ui-datatable .ui-paginator {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.ui-datatable .ui-paginator .ui-button {
+    margin-left: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        transform: translateX(-100%);
+        position: absolute;
+    }
+
+    nav.active {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+}
+
+
+/* Styling for the page size selector */
+.pageSizeWrapper {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.pageSizeDropdown {
+    margin-left: 5px;
+}
+
+/* Styling for the pagination buttons */
+.paginationButtons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paginationButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.paginationButtons p:commandButton {
+    margin: 0 10px;
+}
+
+.paginationControls {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between controls */
+    margin-bottom: 20px; /* Space below the controls */
+}
+
+.labelControl {
+    font-weight: bold;
+}
+
+.pageSizeDropdown {
+    width: 100px; /* Set a fixed width for the dropdown */
+}
+
+.searchInput {
+    padding: 5px; /* Padding for better usability */
+    width: 200px; /* Width for the search input */
+}
+
+.searchButton {
+    padding: 5px 10px; /* Padding for the search button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    text-align: center; /* Center text within the button */
+    font-size: 14px; /* Set a consistent font size */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.searchButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.searchButton:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
+}
+
+/*navigation button*/
+.navigationButton {
+    padding: 5px 10px; /* Padding for the search button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    text-align: center; /* Center text within the button */
+    font-size: 14px; /* Set a consistent font size */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    display: inline-block; /* Ensure the button behaves like a block element */
+    width: 120px; /* Set a fixed width for uniformity */
+}
+
+.navigationButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.navigationButton:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
+}
+
+.navigationButton:disabled {
+    background-color: #c0c0c0; /* Light gray background for disabled state */
+    color: #6c757d; /* Bootstrap secondary color for text */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    opacity: 0.65; /* Slightly transparent to indicate it's disabled */
+}
+
+/* Create Student */
+.form-group {
+margin-bottom: 15px;
+display: flex;
+flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.error-message {
     color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-actions h\\:commandButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+}
+
+.btn-submit {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #218838;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions h\\:commandButton {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
