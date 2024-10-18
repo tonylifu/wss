@@ -17,4 +17,8 @@ public interface StudentService {
     void deleteStudentByStudentId(String studentId);
 
     long countAllStudents();
+
+    List<Student> searchStudentsByColumn(String fieldValue, String column);
+
+    List<Student> searchStudentsByColumn(String fieldValue);
 }

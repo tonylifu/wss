@@ -17,7 +17,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.List;
 
@@ -76,6 +76,16 @@ public class StudentRecord implements StudentService {
         return studentDAO.countAll(Student.class);
     }
 
+    @Override
+    public List<Student> searchStudentsByColumn(String fieldValue, String column) {
+        return studentDAO.searchByColumn(fieldValue, column);
+    }
+
+    @Override
+    public List<Student> searchStudentsByColumn(String fieldValue) {
+        return studentDAO.searchByColumn(fieldValue);
+    }
+
     /**
      * Creates a new Student entity based on the provided CreateStudentRequest.
      *
@@ -89,7 +99,7 @@ public class StudentRecord implements StudentService {
         String nextStudentId = AppUtil.generateStudentId(Year.now().getValue(),
                 studentNumberService.generateNextStudentId(Year.now().getValue()));
         student.setStudentId(nextStudentId);
-        long now = AppUtil.convertLocalDateToLong(LocalDate.now());
+        long now = AppUtil.convertLocalDateTimeToLong(LocalDateTime.now());
         student.setCreatedAt(now);
         student.setLastUpdateAt(now);
         student.setStudentStatus(StudentStatus.CREATED);
