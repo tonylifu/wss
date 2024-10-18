@@ -16,133 +16,133 @@
 
         <title>Webstartrek School System</title>
 
-        <style>
-            /* Reset some default browser settings */
-            /* {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+<!--        <style>-->
+<!--            /* Reset some default browser settings */-->
+<!--            /* {-->
+<!--                margin: 0;-->
+<!--                padding: 0;-->
+<!--                box-sizing: border-box;-->
+<!--            }-->
 
-            body {
-                font-family: 'Roboto', sans-serif;
-                background-color: #F9FAFB;
-                color: #333;
-            }*/
+<!--            body {-->
+<!--                font-family: 'Roboto', sans-serif;-->
+<!--                background-color: #F9FAFB;-->
+<!--                color: #333;-->
+<!--            }*/-->
 
-            header {
-                background-color: #1F2937;
-                padding: 1em 0;
-                text-align: center;
-                /*border-bottom: 4px solid #2563EB;*/
-            }
+<!--            header {-->
+<!--                background-color: #1F2937;-->
+<!--                padding: 1em 0;-->
+<!--                text-align: center;-->
+<!--                /*border-bottom: 4px solid #2563EB;*/-->
+<!--            }-->
 
-            .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 2em;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
+<!--            .header-container {-->
+<!--                display: flex;-->
+<!--                align-items: center;-->
+<!--                justify-content: space-between;-->
+<!--                padding: 0 2em;-->
+<!--                max-width: 1200px;-->
+<!--                margin: 0 auto;-->
+<!--            }-->
 
-            .logo-container {
-                flex: 1;
-                display: flex;
-                justify-content: flex-start;
-            }
+<!--            .logo-container {-->
+<!--                flex: 1;-->
+<!--                display: flex;-->
+<!--                justify-content: flex-start;-->
+<!--            }-->
 
-            .logo {
-                max-width: 120px;
-                height: auto;
-            }
+<!--            .logo {-->
+<!--                max-width: 120px;-->
+<!--                height: auto;-->
+<!--            }-->
 
-            .site-title {
-                flex: 3;
-                text-align: left;
-                color: #FFFFFF;
-            }
+<!--            .site-title {-->
+<!--                flex: 3;-->
+<!--                text-align: left;-->
+<!--                color: #FFFFFF;-->
+<!--            }-->
 
-            .site-title h1 {
-                font-size: 1.8em;
-                color: #FFFFFF;
-                margin: 0;
-            }
+<!--            .site-title h1 {-->
+<!--                font-size: 1.8em;-->
+<!--                color: #FFFFFF;-->
+<!--                margin: 0;-->
+<!--            }-->
 
-            nav {
-                flex: 2;
-                display: flex;
-                justify-content: flex-end;
-            }
+<!--            nav {-->
+<!--                flex: 2;-->
+<!--                display: flex;-->
+<!--                justify-content: flex-end;-->
+<!--            }-->
 
-            .navigation-menu {
-                list-style: none;
-                display: flex;
-                gap: 1.5em;
-            }
+<!--            .navigation-menu {-->
+<!--                list-style: none;-->
+<!--                display: flex;-->
+<!--                gap: 1.5em;-->
+<!--            }-->
 
-            .navigation-menu li {
-                display: inline;
-            }
+<!--            .navigation-menu li {-->
+<!--                display: inline;-->
+<!--            }-->
 
-            .navigation-menu a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-size: 1.1em;
-                padding: 0.5em 1em;
-                transition: background-color 0.3s ease;
-                border-radius: 4px;
-            }
+<!--            .navigation-menu a {-->
+<!--                color: #FFFFFF;-->
+<!--                text-decoration: none;-->
+<!--                font-size: 1.1em;-->
+<!--                padding: 0.5em 1em;-->
+<!--                transition: background-color 0.3s ease;-->
+<!--                border-radius: 4px;-->
+<!--            }-->
 
-            .navigation-menu a:hover {
-                background-color: #2563EB;
-            }
+<!--            .navigation-menu a:hover {-->
+<!--                background-color: #2563EB;-->
+<!--            }-->
 
-            /* Mobile responsive styles */
-            @media (max-width: 768px) {
-                .header-container {
-                    flex-direction: column;
-                    text-align: center;
-                }
+<!--            /* Mobile responsive styles */-->
+<!--            @media (max-width: 768px) {-->
+<!--                .header-container {-->
+<!--                    flex-direction: column;-->
+<!--                    text-align: center;-->
+<!--                }-->
 
-                .site-title h1 {
-                    font-size: 1.5em;
-                }
+<!--                .site-title h1 {-->
+<!--                    font-size: 1.5em;-->
+<!--                }-->
 
-                nav {
-                    margin-top: 1em;
-                }
+<!--                nav {-->
+<!--                    margin-top: 1em;-->
+<!--                }-->
 
-                .navigation-menu {
-                    flex-direction: column;
-                    gap: 0.5em;
-                }
-            }
-        </style>
+<!--                .navigation-menu {-->
+<!--                    flex-direction: column;-->
+<!--                    gap: 0.5em;-->
+<!--                }-->
+<!--            }-->
+<!--        </style>-->
     </h:head>
 
     <h:body>
         <header>
-            <div class="header-container">
-                <!-- Logo Section -->
-                <div class="logo-container">
-                    <h:graphicImage name="images/logo.jpg" alt="Webstartrek School System Logo" class="logo" />
+            <div class="logo">
+                <h:graphicImage name="images/logo.jpg" alt="Company Logo" class="logo"/>
+                <h1>Westartrek School Systems</h1>
+            </div>
+            <div class="header-menu">
+                <h:link value="Home" outcome="portal.xhtml"/>
+                <h:link value="About Us" outcome="portal.xhtml"/>
+                <h:link value="Contact" outcome="portal.xhtml"/>
+                <h:link value=""/>
+                <div class="dropdown">
+                    <div style="margin: 0; color: white; cursor: pointer;">
+                        Profiles <span class="icon"><i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="submenu">
+                        <h:link value="Settings" outcome="portal.xhtml"/>
+                        <h:link value="Change Password" outcome="portal.xhtml"/>
+                        <h:link value="Edit" outcome="portal.xhtml"/>
+                        <h:link value="Logout" outcome="portal.xhtml"/>
+                    </div>
                 </div>
-
-                <!-- Site Title Section -->
-                <div class="site-title">
-                    <h1>Webstartrek School System</h1>
-                </div>
-
-                <!-- Navigation Section -->
-                <nav>
-                    <ul class="navigation-menu">
-                        <li><h:link value="Home" outcome="/create-student.xhtml" /></li>
-                        <li><h:link value="About Us" outcome="/create-student.xhtml" /></li>
-                        <li><h:link value="Contact" outcome="/create-student.xhtml" /></li>
-                        <li><h:link value="Login" outcome="/create-student.xhtml" /></li>
-                    </ul>
-                </nav>
             </div>
         </header>
     </h:body>
