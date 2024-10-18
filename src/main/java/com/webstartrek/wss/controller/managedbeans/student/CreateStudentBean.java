@@ -54,7 +54,8 @@ public class CreateStudentBean {
     public String createStudent() {
         // Convert JSF data to CreateStudentRequest object
         CreateStudentRequest studentRequest = new CreateStudentRequest(
-                firstName, middleName, lastName, dob, gender, address, contact, legalGuardian, currentGrade, isDisabled, disabilityDetails);
+                firstName, middleName, lastName, dob, gender, address, contact, legalGuardian,
+                currentGrade, isDisabled, disabilityDetails);
 
         // Call your service to create student (replace with your logic)
         studentService.createStudent(studentRequest);

@@ -17,4 +17,10 @@ public interface DAOService <T, ID> {
 
     @Transactional
     void delete(@NotNull ID id);
+
+    <S> long countAll(Class<S> entityClass);
+
+    List<T> searchByColumn(String searchField, String columnName);
+
+    List<T> searchByColumn(String searchField);
 }
