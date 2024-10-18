@@ -6,18 +6,18 @@ html {
 
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f9f9f9; /* Soft light background */
+    color: #333; /* Dark text for readability */
     line-height: 1.6;
 }
 
+/* Header */
 header {
-    background-color: #4CAF50;
+    background-color: #005f73; /* Deep teal for header */
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px; /* Slightly larger padding for a better look */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,16 +27,15 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.8em; /* Slightly larger font size */
 }
 
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
     height: auto; /* Maintain aspect ratio */
-    opacity: 0.7;
-    border-radius: 50%;
-    background-size: cover;
+    opacity: 0.9; /* Slightly higher opacity */
 }
 
 .logo img {
@@ -46,7 +45,7 @@ header h1 {
 
 /* Navigation */
 nav {
-    background-color: #333;
+    background-color: #0a9396; /* Soft teal for navigation */
     color: white;
     height: calc(100vh - 60px);
     width: 250px;
@@ -74,31 +73,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #575757;
-}
-
-.submenu {
-    margin-left: 20px;
-    display: none;
-    position: relative;
-    background-color: #444;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1;
-}
-
-.submenu a {
-    padding: 5px;
-    transition: background 0.3s;
-}
-
-.dropdown {
-    position: relative;
-    display: block;
-}
-
-.dropdown:hover .submenu {
-    display: block;
+    background-color: #94d2bd; /* Lightened hover color for better visibility */
 }
 
 /* Content */
@@ -106,7 +81,7 @@ nav a:hover {
     margin-left: 270px;
     padding: 20px;
     min-height: calc(100vh - 60px);
-    background-color: #ffffff;
+    background-color: #ffffff; /* White for contrast */
     transition: margin-left 0.3s ease;
 }
 
@@ -125,28 +100,13 @@ nav a:hover {
 }
 
 footer {
-    background-color: #4CAF50;
+    background-color: #005f73; /* Consistent footer color */
     color: white;
     text-align: center;
     padding: 10px 0;
     position: relative;
     bottom: 0;
     width: 100%;
-}
-
-.header-menu {
-    display: flex;
-    align-items: center;
-}
-
-.header-menu a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.header-menu a:hover {
-    text-decoration: underline;
 }
 
 /* Table Styles */
@@ -163,186 +123,44 @@ th, td {
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #005f73; /* Consistent header color */
     color: white;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e9d8a6; /* Soft light yellow on row hover */
 }
 
-/* PrimeFaces DataTable Styles */
-.dataTableWrapper {
-    margin-top: 20px;
-}
-
-.ui-datatable {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    width: 100%;
-}
-
-.ui-datatable-header {
-    background-color: #4CAF50;
+/* Buttons */
+.searchButton, .navigationButton, .btn-submit, .btn-cancel {
+    padding: 8px 12px;
+    background-color: #005f73; /* Primary button color */
     color: white;
-    font-weight: bold;
-    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    display: inline-block;
 }
 
-.ui-datatable-footer {
-    background-color: #f4f4f4;
-    padding: 10px;
+.searchButton:hover, .navigationButton:hover, .btn-submit:hover, .btn-cancel:hover {
+    background-color: #0a9396; /* Lightened shade on hover */
 }
 
-.ui-datatable th {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
+/* Disabled Button Styles */
+.navigationButton:disabled, .btn-cancel:disabled, .btn-submit:disabled {
+    background-color: #c0c0c0;
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
-.ui-datatable td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.ui-datatable tr:hover {
-    background-color: #f1f1f1;
-}
-
-.ui-datatable .ui-paginator {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-}
-
-.ui-datatable .ui-paginator .ui-button {
-    margin-left: 5px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    nav {
-        transform: translateX(-100%);
-        position: absolute;
-    }
-
-    nav.active {
-        transform: translateX(0);
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 10px;
-    }
-}
-
-
-/* Styling for the page size selector */
-.pageSizeWrapper {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.pageSizeDropdown {
-    margin-left: 5px;
-}
-
-/* Styling for the pagination buttons */
-.paginationButtons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.paginationButtons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.paginationButtons p:commandButton {
-    margin: 0 10px;
-}
-
-.paginationControls {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between controls */
-    margin-bottom: 20px; /* Space below the controls */
-}
-
-.labelControl {
-    font-weight: bold;
-}
-
-.pageSizeDropdown {
-    width: 100px; /* Set a fixed width for the dropdown */
-}
-
-.searchInput {
-    padding: 5px; /* Padding for better usability */
-    width: 200px; /* Width for the search input */
-}
-
-.searchButton {
-    padding: 5px 10px; /* Padding for the search button */
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* White text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-    text-align: center; /* Center text within the button */
-    font-size: 14px; /* Set a consistent font size */
-    transition: background-color 0.3s; /* Smooth background color transition */
-}
-
-.searchButton:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-.searchButton:focus {
-    outline: none; /* Remove outline on focus */
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-}
-
-/*navigation button*/
-.navigationButton {
-    padding: 5px 10px; /* Padding for the search button */
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* White text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-    text-align: center; /* Center text within the button */
-    font-size: 14px; /* Set a consistent font size */
-    transition: background-color 0.3s; /* Smooth background color transition */
-    display: inline-block; /* Ensure the button behaves like a block element */
-    width: 120px; /* Set a fixed width for uniformity */
-}
-
-.navigationButton:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-.navigationButton:focus {
-    outline: none; /* Remove outline on focus */
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Bootstrap focus effect */
-}
-
-.navigationButton:disabled {
-    background-color: #c0c0c0; /* Light gray background for disabled state */
-    color: #6c757d; /* Bootstrap secondary color for text */
-    cursor: not-allowed; /* Change cursor to indicate disabled state */
-    opacity: 0.65; /* Slightly transparent to indicate it's disabled */
-}
-
-/* Create Student */
+/* Form Styles */
 .form-group {
-margin-bottom: 15px;
-display: flex;
-flex-direction: column;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group label {
@@ -372,44 +190,98 @@ flex-direction: column;
     justify-content: space-between;
 }
 
-.form-actions h\\:commandButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: none;
-}
-
-.btn-submit {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-submit:hover {
-    background-color: #218838;
-}
-
-.btn-cancel {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-cancel:hover {
-    background-color: #c82333;
-}
-
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .form-group {
-        flex-direction: column;
+    nav {
+        transform: translateX(-100%);
+        position: absolute;
     }
 
-    .form-actions {
-        flex-direction: column;
+    nav.active {
+        transform: translateX(0);
     }
 
-    .form-actions h\\:commandButton {
-        width: 100%;
-        margin-bottom: 10px;
+    .content {
+        margin-left: 0;
+        padding: 10px;
     }
 }
+
+/* experimental */
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: block; /* Block to align with the rest of the nav */
+}
+
+/* Hide the input checkbox */
+.menu-checkbox {
+    display: none;
+}
+
+/* Label that acts as a toggle */
+label h3 {
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+    display: block;
+}
+
+/* Submenu Styles */
+.submenu {
+    display: none; /* Hidden by default */
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    z-index: 1;
+    min-width: 150px;
+    position: relative; /* Positioned relative to the dropdown */
+}
+
+/* Links inside the submenu */
+.submenu a,
+.submenu h:link {
+    color: #ecf0f1;
+    padding: 8px;
+    display: block;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover,
+.submenu h:link:hover {
+    background-color: #4b6273;
+}
+
+/* Show submenu when the checkbox is checked */
+.menu-checkbox:checked + label + .submenu {
+    display: block; /* Submenu is visible when checkbox is checked */
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: #2c3e50;
+    padding: 15px;
+    width: 250px;
+}
+
+nav h3 {
+    color: #ecf0f1;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+nav h:link {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+}
+
+nav h:link:hover {
+    text-decoration: underline;
+}
+
+
+

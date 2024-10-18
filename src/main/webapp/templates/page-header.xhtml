@@ -6,121 +6,6 @@
       lang="en">
 
 <ui:composition>
-    <h:head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Webstartrek School System - A comprehensive platform for managing school operations efficiently." />
-        <meta name="author" content="Webstartrek Development Team" />
-        <meta name="keywords" content="school system, education platform, student management, Webstartrek" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <title>Webstartrek School System</title>
-
-<!--        <style>-->
-<!--            /* Reset some default browser settings */-->
-<!--            /* {-->
-<!--                margin: 0;-->
-<!--                padding: 0;-->
-<!--                box-sizing: border-box;-->
-<!--            }-->
-
-<!--            body {-->
-<!--                font-family: 'Roboto', sans-serif;-->
-<!--                background-color: #F9FAFB;-->
-<!--                color: #333;-->
-<!--            }*/-->
-
-<!--            header {-->
-<!--                background-color: #1F2937;-->
-<!--                padding: 1em 0;-->
-<!--                text-align: center;-->
-<!--                /*border-bottom: 4px solid #2563EB;*/-->
-<!--            }-->
-
-<!--            .header-container {-->
-<!--                display: flex;-->
-<!--                align-items: center;-->
-<!--                justify-content: space-between;-->
-<!--                padding: 0 2em;-->
-<!--                max-width: 1200px;-->
-<!--                margin: 0 auto;-->
-<!--            }-->
-
-<!--            .logo-container {-->
-<!--                flex: 1;-->
-<!--                display: flex;-->
-<!--                justify-content: flex-start;-->
-<!--            }-->
-
-<!--            .logo {-->
-<!--                max-width: 120px;-->
-<!--                height: auto;-->
-<!--            }-->
-
-<!--            .site-title {-->
-<!--                flex: 3;-->
-<!--                text-align: left;-->
-<!--                color: #FFFFFF;-->
-<!--            }-->
-
-<!--            .site-title h1 {-->
-<!--                font-size: 1.8em;-->
-<!--                color: #FFFFFF;-->
-<!--                margin: 0;-->
-<!--            }-->
-
-<!--            nav {-->
-<!--                flex: 2;-->
-<!--                display: flex;-->
-<!--                justify-content: flex-end;-->
-<!--            }-->
-
-<!--            .navigation-menu {-->
-<!--                list-style: none;-->
-<!--                display: flex;-->
-<!--                gap: 1.5em;-->
-<!--            }-->
-
-<!--            .navigation-menu li {-->
-<!--                display: inline;-->
-<!--            }-->
-
-<!--            .navigation-menu a {-->
-<!--                color: #FFFFFF;-->
-<!--                text-decoration: none;-->
-<!--                font-size: 1.1em;-->
-<!--                padding: 0.5em 1em;-->
-<!--                transition: background-color 0.3s ease;-->
-<!--                border-radius: 4px;-->
-<!--            }-->
-
-<!--            .navigation-menu a:hover {-->
-<!--                background-color: #2563EB;-->
-<!--            }-->
-
-<!--            /* Mobile responsive styles */-->
-<!--            @media (max-width: 768px) {-->
-<!--                .header-container {-->
-<!--                    flex-direction: column;-->
-<!--                    text-align: center;-->
-<!--                }-->
-
-<!--                .site-title h1 {-->
-<!--                    font-size: 1.5em;-->
-<!--                }-->
-
-<!--                nav {-->
-<!--                    margin-top: 1em;-->
-<!--                }-->
-
-<!--                .navigation-menu {-->
-<!--                    flex-direction: column;-->
-<!--                    gap: 0.5em;-->
-<!--                }-->
-<!--            }-->
-<!--        </style>-->
-    </h:head>
-
     <h:body>
         <header>
             <div class="logo">
@@ -131,11 +16,12 @@
                 <h:link value="Home" outcome="portal.xhtml"/>
                 <h:link value="About Us" outcome="portal.xhtml"/>
                 <h:link value="Contact" outcome="portal.xhtml"/>
-                <h:link value=""/>
+
                 <div class="dropdown">
-                    <div style="margin: 0; color: white; cursor: pointer;">
+                    <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+                    <label for="menu-toggle" class="dropdown-toggle">
                         Profiles <span class="icon"><i class="fas fa-caret-down"></i></span>
-                    </div>
+                    </label>
                     <div class="submenu">
                         <h:link value="Settings" outcome="portal.xhtml"/>
                         <h:link value="Change Password" outcome="portal.xhtml"/>
@@ -145,6 +31,7 @@
                 </div>
             </div>
         </header>
+
     </h:body>
 </ui:composition>
 </html>

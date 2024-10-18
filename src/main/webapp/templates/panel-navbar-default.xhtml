@@ -10,10 +10,14 @@
         <h:link value="Dashboard" outcome="portal.xhtml"/>
         <h3>Student Management</h3>
         <h:link value="Create Student" outcome="create-student.xhtml"/>
+
+        <!-- Dropdown with checkbox for toggling -->
         <div class="dropdown">
-            <h3 style="margin: 0; cursor: pointer;">
-                Settings <span class="icon"><i class="fas fa-caret-down"></i></span>
-            </h3>
+            <input type="checkbox" id="settingsMenu" class="menu-checkbox" />
+            <h3>
+                <label for="settingsMenu">
+                    Settings <span class="icon"><i class="fas fa-caret-down"></i></span>
+                </label></h3>
             <div class="submenu">
                 <h:link value="Account Settings" outcome="portal.xhtml"/>
                 <h:link value="Logout" outcome="portal.xhtml"/>
